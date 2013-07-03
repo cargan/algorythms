@@ -1,6 +1,6 @@
 <?php
 
-$data = array(5, 2, 3, 1, 4, 6);
+$data = array(5, 2, 3, 1, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14);
 print_r($data);
 $length = count($data);
 // merge(array_slice($data, 0, $length / 2), array_slice($data, $length / 2));
@@ -55,6 +55,7 @@ function mmerge($left, $right) {
 
 }
 function merge($left, $right) {
+    print_r(array($left, $right));
     if (count($left) > 2) {
         divide($left);
     }
@@ -62,8 +63,13 @@ function merge($left, $right) {
         divide($right);
     }
 
-    $left = conquer($left[0], $left[1]);
-    $right = conquer($right[0],$right[1]);
+    if (count($left) == 2) {
+        $left = conquer($left[0], $left[1]);
+    }
+
+    if (count($right) == 2) {
+        $right = conquer($right[0],$right[1]);
+    }
 
     return mmerge($left, $right);
     }
